@@ -1,0 +1,31 @@
+{% include "layouts/ecommerce/search.html" %}
+{% include "layouts/ecommerce/messages.html" %}
+
+{% block title %}Lista de Productos{% endblock %}
+{% block body %}
+  <div>
+    <div>
+      <h1>
+        Nuestros Productos
+      </h1>
+      <a href="{% url 'create' %}">
+        Crear Producto
+      </a>
+    </div>
+
+    {% include "layouts/ecommerce/search.html" %}
+
+    <ul>
+      {% for product in products %}
+        <li>
+          <a href="{% url 'detail' product.id %}">
+            {{ product.title }}
+          </a>
+          <p>{{ product.description|truncatewords:20|default:"Sin descripción." }}</p>
+        </li>
+      {% empty %}
+        <p>No hay productos para mostrar.</p>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

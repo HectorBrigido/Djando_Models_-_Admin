@@ -1,0 +1,24 @@
+{% include "layouts/ecommerce/messages.html" %}
+
+{% block title %}Eliminar: {{ product.title }}{% endblock %}
+
+{% block body %}
+  <div>
+    <h1>
+      Eliminar: {{ product.title }}
+    </h1>
+
+    <form method="POST">
+      {% csrf_token %}
+      <p>¿Estás seguro de que quieres eliminar este producto? Esta acción no se puede deshacer.</p>
+      <div>
+        <button type="submit">
+          Sí, eliminar
+        </button>
+        <a href="/ecommerce/{{ product.id }}">
+          Cancelar
+        </a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% if title %}
+    <h1>{{ title }}</h1>
+{% endif %}
+
+{% for object in object_list %}
+    <li>{{ object.title }} - {{ object.slug }}</li>
+{% endfor %}

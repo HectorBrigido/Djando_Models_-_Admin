@@ -1,0 +1,31 @@
+{% include "layouts/ecommerce/messages.html" %}
+
+{% block title %}{{ product.title }}{% endblock %}
+
+{% block body %}
+  <div>
+    <h1>
+      {{ product.title }}
+    </h1>
+    <p>
+      Precio: ${{ product.price|floatformat:2 }}
+    </p>
+
+    <div>
+        <p>{{ product.description|default:"Este producto no tiene una descripción detallada." }}</p>
+        
+        <h3>Detalles Adicionales</h3>
+        <ul>
+            <li><strong>Vendedor:</strong> {{ product.seller|default:"No especificado" }}</li>
+            <li><strong>Color:</strong> {{ product.color|default:"No especificado" }}</li>
+            <li><strong>Dimensiones:</strong> {{ product.product_dimensions|default:"No especificado" }}</li>
+        </ul>
+    </div>
+
+    <div>
+        <a href="{% url 'update' product.id %}">Editar</a>
+        <a href="{% url 'delete' product.id %}">Eliminar</a>
+        <a href="{% url 'list' %}"> Volver a la lista</a>
+    </div>
+  </div>
+{% endblock %}

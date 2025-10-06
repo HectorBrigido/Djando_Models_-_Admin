@@ -1,0 +1,24 @@
+{% include "layouts/ecommerce/messages.html" %}
+
+{% block title %}Actualizar: {{ form.instance.title }}{% endblock %}
+
+{% block body %}
+  <div>
+    <h1>
+      Actualizar: {{ form.instance.title }}
+    </h1>
+
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div>
+        <button type="submit">
+          Guardar Cambios
+        </button>
+        <a href="{% url 'detail' form.instance.id %}">
+          Cancelar
+        </a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

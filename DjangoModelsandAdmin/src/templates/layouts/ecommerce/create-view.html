@@ -1,0 +1,24 @@
+{% include "layouts/ecommerce/messages.html" %}
+
+{% block title %}Crear Producto{% endblock %}
+
+{% block body %}
+  <div>
+    <h1>
+      Crear un Nuevo Producto
+    </h1>
+
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div>
+        <button type="submit">
+          Guardar Producto
+        </button>
+        <a href="{% url 'list' %}" >
+          Cancelar
+        </a>
+      </div>
+    </form>
+  </div>
+{% endblock %}
